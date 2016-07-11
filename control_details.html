@@ -58,7 +58,7 @@
 			<li><a href="tutorial.html" >Tutorial</a></li>
 			<li><a href="development.html">Download</a></li>
 			<li><a href="publications.html">Publications</a></li>
-			<li><a href="supp_material.html">Media</a></li>
+			<li><a href="supp_material.html">Gallery</a></li>
 			<li><a href="about_us.html">About us</a></li>
 		</ul>
 		<div class="clearer">&nbsp;</div>
@@ -71,9 +71,25 @@
 			<div class="center_wrapper">
 
 				<div class="left" id="main">
-					<div id="main_content">				
-
-						<p>Let $x \in R$ be the state variable representing the position of the virtual player (VP).
+					<div id="main_content">	
+						<p>The cognitive architecture, here proposed, replicates the main processes involved
+							in making a human play the mirror game.<br>
+							The position of the human player is detected by a position sensor with period $T$ and sent
+							to control as input. As first step, the sampled positions are used to evaluate
+							an approximation of the velocity of the HP (human player). The controller is able to generate the control
+							input $u$ evaluating the error between the sampled position and the estimated velocity
+							and the previous position and velocity of the <a href="publications.html">virtual player</a>. The control input $u$ is sent
+							as input to the model system that provides the generation of the desidered trajectory
+							(position and velocity). Such a trajectory is then fed to the <a href="publications.html">virtual player</a>.
+						</p>
+					
+						<div class="thumbnails">			
+							<a href="img/control_architecture.png" class="thumb"><img 
+							src="img/control_architecture.png" alt="Resized PNG graphic" 
+							title="Click to view" border="5" width="535" height="250" hspace="10" /></a>
+						</div>			
+						<br></br>
+						<p>To be more formal, let $x \in R$ be the state variable representing the position of the <a href="download.html">virtual player</a> (VP).
 						The system describing its behavior is given by:</p>
 						
 						<center>
@@ -140,7 +156,7 @@
 								</center>
 								<br>
 								where $y$ is the position of the other agent coupled to the VP, $\dot{\sigma}$ 
-								is its desired motor signature (velocity trajectory), and $K_p$ and $K_{\sigma}$
+								is its desired <a href="http://rsif.royalsocietypublishing.org/content/13/116/20151093">motor signature</a> (velocity trajectory), and $K_p$ and $K_{\sigma}$
 								are two control gains.
 								<br></br>
 							</li>
@@ -192,44 +208,18 @@
 										<br>
 										where $\lambda:= e^{-\delta \left| x-y \right|}$, $K$ is a control parameter,
 										$\sigma$ and $\dot{\sigma}$ are desired position and velocity profiles 
-										(motor signature) that allow the VP to generate spontaneous motion, and all 
+										(<a href="http://rsif.royalsocietypublishing.org/content/13/116/20151093">motor signature</a>) that allow the VP to generate spontaneous motion, and all 
 										the other quantities have been previously defined.
 									</li>
 								</ul>
 							</li>				
 						</ol>
-						
-						<div class="thumbnails">			
-							<a href="img/control_architecture.png" class="thumb"><img 
-							src="img/control_architecture.png" alt="Resized PNG graphic" 
-							title="Click to view" border="5" width="535" height="250" hspace="10" /></a>
-						</div>
 									
 					</div>
 				</div>
 
 				<div class="right" id="sidebar">
 					<div id="sidebar_content">
-						
-						<div class="box">
-							<div class="box_title">Contact us</div>
-							<div class="box_content">
-								<h6>Prof. Mario di Bernardo</h6>
-								phone: +39 081-7683909<br>
-								fax: +39 081-7683186<br>
-								e-mail: mario.dibernardo@unina.it<br>
-								e-mail: enmdb@bristol.ac.uk
-								<br></br>
-								<h6>Dr. Gianfranco Fiore</h6>
-								e-mail: gf14712@bristol.ac.uk
-								<br></br>
-								<h6>Francesco Alderisio</h6>
-								e-mail: f.alderisio@bristol.ac.uk
-								<br></br>
-								<h6>Maria Lombardi</h6>
-								e-mail: maria.lombardi6@studenti.unina.it
-							</div>
-						</div>
 						
 						<div class="box">
 							<div class="box_title">European Projects</div>
@@ -255,6 +245,7 @@
 								</p>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 				
