@@ -72,16 +72,18 @@
 
 				<div class="left" id="main">
 					<div id="main_content">	
-						<p>The cognitive architecture, here proposed, replicates the main processes involved
-							in making a human play the mirror game.<br>
-							The position of the human player is detected by a position sensor with period $T$ and sent
-							to control as input. As first step, the sampled positions are used to evaluate
-							an approximation of the velocity of the HP (human player). The controller is able to generate the control
-							input $u$ evaluating the error between the sampled position and the estimated velocity
-							and the previous position and velocity of the <a href="publications.html">virtual player</a>. The control input $u$ is sent
-							as input to the model system that provides the generation of the desidered trajectory
-							(position and velocity). Such a trajectory is then fed to the <a href="publications.html">virtual player</a>.
-						</p>
+						<p>Making a virtual agent interact with a human participant can be seen as a control problem, 
+						where the human player (HP) is the reference system, and the <a href="publications.html">virtual player</a> (VP) is the 
+						system to be controlled. <br>
+						The position of the human player is detected by a motion sensor, such that her/his position 
+						and velocity at the next time step ($y$ and $\dot{y}$, respectively) can be estimated. 
+						Then, they enter a feedback control loop. <br>
+						The controller is able to generate the control input $u$ according to the mismatch 
+						between position and velocity of HP and VP and to a desired motor signature 
+						$\dot{\sigma}$ which enables the VP to exhibit the kinematic features of a given human 
+						player (not necessarily that employed as reference system). Then, $u$ is sent as input 
+						to the system modelling the dynamics of the virtual agent, such that its position and 
+						velocity ($x$ and $\dot{x}$, respectively) can finally be evaluated.</p>
 					
 						<div class="thumbnails">			
 							<a href="img/control_architecture.png" class="thumb"><img 
@@ -89,7 +91,7 @@
 							title="Click to view" border="5" width="535" height="250" hspace="10" /></a>
 						</div>			
 						<br></br>
-						<p>To be more formal, let $x \in R$ be the state variable representing the position of the <a href="download.html">virtual player</a> (VP).
+						<p>Specifically,, let $x \in R$ be the state variable representing the position of the <a href="download.html">virtual player</a> (VP).
 						The system describing its behavior is given by:</p>
 						
 						<center>

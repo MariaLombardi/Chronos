@@ -2,6 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 
 <head>
+	<script type="text/javascript" async
+  		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 	<meta name="description" content=""/>
 	<meta name="keywords" content="" />
@@ -98,6 +104,7 @@
 							the same WLAN through TCP/IP protocol [2].</li>
 						</ul>
 						
+						<div class="clearer">&nbsp;</div>
 						<div class="content_separator"></div>
 						<h2>Software system</h2>
 						<p>The software system, which is based on a client-server model [3], consists of:</p>
@@ -122,7 +129,82 @@
 							title="Click to view" border="5" width="520" height="440" hspace="10" /></a>
 						</div>
 						
-						
+						<div class="clearer">&nbsp;</div>
+						<div class="content_separator"></div>
+						<h2>Metrics employed</h2>
+						<p>Let $x_k(t) \in \mathbb{R}\ \forall t \in [0,T]$ be the continuous time series representing the 
+						motion of the $k$-th agent, with $k \in [1,P]$, where $P$ is the total number of subjects and $T$ is 
+						the duration of the experiment. Let $x_k[t_i] \in \mathbb{R}$, with $k \in [1,P]$ and $ i \in [1,N_T]$, 
+						be the respective discrete time series of the $k$-th agent, obtained after sampling $x_k(t)$ at time 
+						instants $t_i$, where $N_T$ is the number of time steps of duration $\Delta T := \frac{T}{N_T}$, that 
+						is the sampling period. Let $\theta_k(t) \in [-\pi,\pi]$ be the phase of the $k$-th agent, which can 
+						be estimated by making use of the Hilbert transform of the signal $x_k(t)$.
+						<br></br>
+						When $P=2$ (<i><b>Dyadic interaction</b></i>), if we denote with $\phi_{d_{h,k}}(t):=\theta_h(t)-\theta_{k}(t)$ 
+						the relative phase between agents $h$ and $k$ at time $t$, it is possible to define the following parameter
+						</p>
+						<center>
+							<h6>
+							$\rho_{d_{h,k}} := \left | \frac{1}{T} \int_{0}^{T} e^{ j \phi_{d_{h,k}}(t) } \ dt \right | 
+							\simeq \left | \frac{1}{N_T} \sum_{i=1}^{N_T} e^{ j \phi_{d_{h,k}}[t_i] } \right | \quad 
+							\in [0,1]$
+							</h6>
+						</center>
+						<p>
+						as their <i><b>dyadic synchronization index</b></i>: the closer $\rho_{d_{h,k}}$ is to $1$, the lower the phase 
+						mismatch between agents $h$ and $k$ over the whole trial. Note that in a <i>Leader-Follower</i> condition, 
+						if  $\phi_{d_{h,k}}$ is defined as the difference between the phase of the leader (player $h$) and that 
+						of the follower (player $k$), positive values indicate that the designated leader is successfully leading 
+						the interaction with the designated follower.
+						<br></br>
+						When $P>2$ (<i><b>Group interaction</b></i>), a further index can be used as measure of the overall 
+						coordination level among agents in the group.
+						We first define the <i>cluster phase</i> or <i>Kuramoto order parameter</i>, both in its 
+						complex form $q'(t) \in \mathbb{C}$ and in its real form $q(t) \in [-\pi,\pi]$ as
+						</p>
+						<center>
+							<h6>
+								$q'(t) :=  \frac{1}{P} \sum_{k=1}^{P} e^{  j \theta_k(t)  }, \qquad q(t) 
+								:= {\rm atan2} \left(\Im(q'(t)),\Re(q'(t))  \right) $
+							</h6>
+						</center>
+						<p>
+						which can be regarded as the average phase of the group at time $t$. 
+						Denoting with $\phi_k(t) := \theta_k(t) - q(t)$ the relative phase between the $k$-th 
+						participant and the group phase at time $t$, we then define the relative phase between the 
+						$k$-th participant and the group averaged over the time interval $[0,T]$, both in its complex 
+						form $\bar{\phi}'_k \in \mathbb{C}$ and in its real form $\bar{\phi}_k \in [-\pi,\pi]$ as
+						</p>
+						<center>
+							<h6>
+								$\bar{\phi}'_k := \frac{1}{T} \int_{0}^{T} e^{ j \phi_k(t) } \ dt \simeq \frac{1}{N_T} 
+								\sum_{i=1}^{N_T} e^{  j \phi_k[t_i] },\qquad  \bar{\phi}_k := {\rm atan2} 
+								\left( \Im(\bar{\phi}'_k), \Re(\bar{\phi}'_k) \right)$
+							</h6>
+						</center>
+						<p>
+						In order to quantify the synchronization level of the entire group at time $t$, 
+						we define the following parameter
+						</p>
+						<center>
+							<h6>
+							$\rho_g(t) := \frac{1}{P} \left | \sum_{k=1}^{P} e^{ j \left( \phi_k(t)- 
+							\bar{\phi}_k \right) } \right | \quad \in [0,1]$
+							</h6>
+						</center>
+						<p>as the <i><b>group synchronization</b></i>: the closer $\rho_g(t)$ is to $1$, the smaller 
+						the average phase mismatch of the agents in the group at time $t$.
+						<br></br>
+						Its value can be averaged over the whole time interval $[0,T]$ in order to have an 
+						estimate of the mean synchronization level of the group during the total duration 
+						of the performance:
+						</p>
+						<center>
+							<h6>
+								$\rho_g := \frac{1}{T} \int_{0}^{T} \rho_g(t) \ dt \simeq \frac{1}{N_T} 
+								\sum_{i=1}^{N_T} \rho_g[t_i] \quad \in [0,1]$
+							</h6>
+						</center>
 					</div>
 				</div>
 
