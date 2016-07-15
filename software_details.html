@@ -23,7 +23,7 @@
 	<div class="center_wrapper">		
 		<div id="toplinks">
 			<div id="toplinks_inner">
-				<a href="LICENSE">Term of use</a>
+				<a href="LICENSE">Terms of use</a>
 			</div>
 		</div>
 		<div class="clearer">&nbsp;</div>	
@@ -156,6 +156,20 @@
 						if  $\phi_{d_{h,k}}$ is defined as the difference between the phase of the leader (player $h$) and that 
 						of the follower (player $k$), positive values indicate that the designated leader is successfully leading 
 						the interaction with the designated follower.
+						<br></br>
+						It is also possible to define the root mean square (RMS) of the normalized position error between 
+						two agents as
+						</p>
+						<center>
+							<h6>
+							$\epsilon_{h,k} := \frac{1}{L} \sqrt{\frac{1}{T}\int_0^T \left( x_h(t)-x_k(t) \right)^2 \ dt} 
+							\simeq \frac{1}{L} \sqrt{\frac{1}{N_T}\sum_{i=1}^{N_T} \left( x_h[t_i]-x_k[t_i] \right)^2}$
+							</h6>
+						</center>
+						<p>
+						where $L$ refers to the range of admissible position (e.g., the range of motion detected 
+						by the Leap Motion controller): the lower $\epsilon_{h,k}$ is, the lower the position 
+						mismatch between agents $h$ and $k$.
 						<br></br>
 						When $P>2$ (<i><b>Group interaction</b></i>), a further index can be used as measure of the overall 
 						coordination level among agents in the group.
